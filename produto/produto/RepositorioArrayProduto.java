@@ -1,4 +1,4 @@
-package Produto;
+package produto.produto;
 
 public class RepositorioArrayProduto implements InterfaceRepositoriosProduto {
     private Produto[] arrayProduto = new Produto[1000];

@@ -4,10 +4,10 @@ public class RepositorioUsuarioAdminArray implements RepositorioUsuarioAdminInte
     private UsuarioAdmin[] arrayAdmin = new UsuarioAdmin[1000];
 
     @Override
-    public void novoAdmin(UsuarioAdmin user) throws LimiteAtingidoException, AdminJaExisteException {
+    public void inserir(UsuarioAdmin user) throws ExceptionLimiteAtingidoAdmin, ExceptionAdminJaExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getNome() == user.getNome()) {
-                throw new AdminJaExisteException();
+                throw new ExceptionAdminJaExiste();
             } else if (arrayAdmin[i] == null) {
                 this.arrayAdmin[i] = user;
                 break;
@@ -16,26 +16,26 @@ public class RepositorioUsuarioAdminArray implements RepositorioUsuarioAdminInte
                     this.arrayAdmin[i] = user;
                     break;
                 } else {
-                    throw new LimiteAtingidoException();
+                    throw new ExceptionLimiteAtingidoAdmin();
                 }
             }
         }
     }
 
     @Override
-    public UsuarioAdmin procura(String CPF) throws AdminNaoExisteException {
+    public UsuarioAdmin procurar(String CPF) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getNome().equals(CPF)) {
                 return arrayAdmin[i];
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
         return null;
     }
 
     @Override
-    public void deleta(String CPF) throws AdminNaoExisteException {
+    public void deletar(String CPF) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 int posicaoEncontrada = i;
@@ -47,62 +47,75 @@ public class RepositorioUsuarioAdminArray implements RepositorioUsuarioAdminInte
                     }
                 }
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaNome(String CPF, String nome) throws AdminNaoExisteException {
+    public boolean existe(String CPF) {
+        for (int i = 0; i < arrayAdmin.length; i++) {
+            if (arrayAdmin[i].getNome().equals(CPF)) {
+                return true;
+            } else if (arrayAdmin[i] == null) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
+    @Override
+    public void atualizaNome(String CPF, String nome) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 arrayAdmin[i].setNome(nome);
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaIdade(String CPF, int idade) throws AdminNaoExisteException {
+    public void atualizaIdade(String CPF, int idade) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 arrayAdmin[i].setIdade(idade);
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaTelefone(String CPF, String telefone) throws AdminNaoExisteException {
+    public void atualizaTelefone(String CPF, String telefone) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 arrayAdmin[i].setTelefone(telefone);
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaCEP(String CPF, String CEP) throws AdminNaoExisteException {
+    public void atualizaCEP(String CPF, String CEP) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 arrayAdmin[i].setCEP(CEP);
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaCodigoFuncionario(String CPF, String codigoFuncionario) throws AdminNaoExisteException {
+    public void atualizaCodigoFuncionario(String CPF, String codigoFuncionario) throws ExceptionAdminNaoExiste {
         for (int i = 0; i < arrayAdmin.length; i++) {
             if (arrayAdmin[i].getCPF().equals(CPF)) {
                 arrayAdmin[i].setCodigoFuncionario(codigoFuncionario);
             } else if (arrayAdmin[i] == null) {
-                throw new AdminNaoExisteException();
+                throw new ExceptionAdminNaoExiste();
             }
         }
     }

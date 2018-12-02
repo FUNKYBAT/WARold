@@ -1,4 +1,4 @@
-package Produto;
+package produto.produto;
 
 public class Produto {
     protected String nome;

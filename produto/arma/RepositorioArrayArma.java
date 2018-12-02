@@ -1,6 +1,5 @@
-package Arma;
-
-import Produto.Produto;
+package produto.arma;
+import produto.produto.Produto;
 
 public class RepositorioArrayArma implements InterfaceRepositoriosArma {
     private Arma[] arrayArma = new Arma[1000];

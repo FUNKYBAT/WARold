@@ -1,4 +1,4 @@
-package Arma;
+package produto.arma;
 
 public class LimiteAtingidoException extends Exception{
     public LimiteAtingidoException(){

@@ -4,10 +4,10 @@ public class RepositorioUsuarioComumArray implements RepositorioUsuarioComumInte
     private UsuarioComum[] arrayUsuarioComum = new UsuarioComum[1000];
 
     @Override
-    public void novoUsuario(UsuarioComum user) throws LimiteAtingidoException, UsuarioJaExisteException {
+    public void inserir(UsuarioComum user) throws ExceptionLimiteAtingidoComum, ExceptionUsuarioJaExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getNome() == user.getNome()) {
-                throw new UsuarioJaExisteException();
+                throw new ExceptionUsuarioJaExiste();
             } else if (arrayUsuarioComum[i] == null) {
                 this.arrayUsuarioComum[i] = user;
                 break;
@@ -16,25 +16,26 @@ public class RepositorioUsuarioComumArray implements RepositorioUsuarioComumInte
                     this.arrayUsuarioComum[i] = user;
                     break;
                 } else {
-                    throw new LimiteAtingidoException();
+                    throw new ExceptionLimiteAtingidoComum();
                 }
             }
         }
     }
 
     @Override
-    public UsuarioComum procura(String CPF) throws UsuarioNaoExisteException {
+    public UsuarioComum procurar(String CPF) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getNome().equals(CPF)) {
                 return arrayUsuarioComum[i];
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
-        }return null;
+        }
+        return null;
     }
 
     @Override
-    public void deleta(String CPF) throws UsuarioNaoExisteException {
+    public void deletar(String CPF) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getNome().equals(CPF)) {
                 int posicaoEncontrada = i;
@@ -46,62 +47,73 @@ public class RepositorioUsuarioComumArray implements RepositorioUsuarioComumInte
                     }
                 }
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }
 
+    public boolean existe(String CPF) {
+        for (int i = 0; i < arrayUsuarioComum.length; i++) {
+            if (arrayUsuarioComum[i].getNome().equals(CPF)) {
+                return true;
+            } else if (arrayUsuarioComum[i] == null) {
+                return false;
+            }
+        }
+        return false;
+    }
+
     @Override
-    public void atualizaNome(String CPF, String nome) throws UsuarioNaoExisteException {
+    public void atualizaNome(String CPF, String nome) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getCPF().equals(CPF)) {
                 arrayUsuarioComum[i].setNome(nome);
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaIdade(String CPF, int idade) throws UsuarioNaoExisteException {
+    public void atualizaIdade(String CPF, int idade) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getCPF().equals(CPF)) {
                 arrayUsuarioComum[i].setIdade(idade);
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaTelefone(String CPF, String telefone) throws UsuarioNaoExisteException {
+    public void atualizaTelefone(String CPF, String telefone) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getCPF().equals(CPF)) {
                 arrayUsuarioComum[i].setTelefone(telefone);
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaCEP(String CPF, String CEP) throws UsuarioNaoExisteException {
+    public void atualizaCEP(String CPF, String CEP) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getCPF().equals(CPF)) {
                 arrayUsuarioComum[i].setCEP(CEP);
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }
 
     @Override
-    public void atualizaNumeroCartao(String CPF, String numeroCartao) throws UsuarioNaoExisteException {
+    public void atualizaNumeroCartao(String CPF, String numeroCartao) throws ExceptionUsuarioNaoExiste {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
             if (arrayUsuarioComum[i].getCPF().equals(CPF)) {
                 arrayUsuarioComum[i].setNumeroCartao(numeroCartao);
             } else if (arrayUsuarioComum[i] == null) {
-                throw new UsuarioNaoExisteException();
+                throw new ExceptionUsuarioNaoExiste();
             }
         }
     }

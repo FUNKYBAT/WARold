@@ -1,6 +1,5 @@
-package Arma;
-
-import Produto.Produto;
+package produto.arma;
+import produto.produto.Produto;
 
 public class RepositorioListaArma implements InterfaceRepositoriosArma {
 

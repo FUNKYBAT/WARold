@@ -4,50 +4,62 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
     UsuarioComum user;
     RepositorioUsuarioComumLista prox;
 
-    RepositorioUsuarioComumLista() {
+    public RepositorioUsuarioComumLista() {
     }
 
     @Override
-    public void novoUsuario(UsuarioComum user) throws UsuarioJaExisteException {
+    public void inserir(UsuarioComum user) throws ExceptionUsuarioJaExiste {
         if (this.user == null) {
             this.user = user;
             this.prox = new RepositorioUsuarioComumLista();
         } else if (this.user.getCPF() == user.getCPF()) {
-            throw new UsuarioJaExisteException();
+            throw new ExceptionUsuarioJaExiste();
         } else {
-            this.prox.novoUsuario(user);
+            this.prox.inserir(user);
         }
     }
 
     @Override
-    public UsuarioComum procura(String CPF) throws UsuarioNaoExisteException {
+    public UsuarioComum procurar(String CPF) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 return this.user;
             } else {
-                return this.prox.procura(CPF);
+                return this.prox.procurar(CPF);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 
     @Override
-    public void deleta(String CPF) throws UsuarioNaoExisteException {
+    public void deletar(String CPF) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user = this.prox.user;
                 this.prox = this.prox.prox;
             } else {
-                this.prox.deleta(CPF);
+                this.prox.deletar(CPF);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
+        }
+    }
+
+    public boolean existe(String CPF) {
+        if (this.user.getCPF() != null) {
+            if (this.user.getCPF().equals(CPF)) {
+                return true;
+            } else {
+                return this.prox.existe(CPF);
+            }
+        } else {
+            return false;
         }
     }
 
     @Override
-    public void atualizaNome(String CPF, String nome) throws UsuarioNaoExisteException {
+    public void atualizaNome(String CPF, String nome) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user.setNome(nome);
@@ -55,12 +67,12 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
                 this.prox.atualizaNome(CPF, nome);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 
     @Override
-    public void atualizaIdade(String CPF, int idade) throws UsuarioNaoExisteException {
+    public void atualizaIdade(String CPF, int idade) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user.setIdade(idade);
@@ -68,12 +80,12 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
                 this.prox.atualizaIdade(CPF, idade);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 
     @Override
-    public void atualizaTelefone(String CPF, String telefone) throws UsuarioNaoExisteException {
+    public void atualizaTelefone(String CPF, String telefone) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user.setTelefone(telefone);
@@ -81,12 +93,12 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
                 this.prox.atualizaTelefone(CPF, telefone);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 
     @Override
-    public void atualizaCEP(String CPF, String CEP) throws UsuarioNaoExisteException {
+    public void atualizaCEP(String CPF, String CEP) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user.setCEP(CEP);
@@ -94,12 +106,12 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
                 this.prox.atualizaCEP(CPF, CEP);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 
     @Override
-    public void atualizaNumeroCartao(String CPF, String numeroCartao) throws UsuarioNaoExisteException {
+    public void atualizaNumeroCartao(String CPF, String numeroCartao) throws ExceptionUsuarioNaoExiste {
         if (this.user.getCPF() != null) {
             if (this.user.getCPF().equals(CPF)) {
                 this.user.setNumeroCartao(numeroCartao);
@@ -107,7 +119,7 @@ public class RepositorioUsuarioComumLista implements RepositorioUsuarioComumInte
                 this.prox.atualizaNumeroCartao(CPF, numeroCartao);
             }
         } else {
-            throw new UsuarioNaoExisteException();
+            throw new ExceptionUsuarioNaoExiste();
         }
     }
 }

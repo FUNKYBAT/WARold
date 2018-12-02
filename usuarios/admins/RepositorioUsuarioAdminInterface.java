@@ -1,19 +1,21 @@
 package usuarios.admins;
 
 public interface RepositorioUsuarioAdminInterface {
-    void novoAdmin(UsuarioAdmin admin) throws AdminJaExisteException, LimiteAtingidoException;
+    void inserir(UsuarioAdmin admin) throws ExceptionAdminJaExiste, ExceptionLimiteAtingidoAdmin;
 
-    UsuarioAdmin procura(String CPF) throws AdminNaoExisteException;
+    UsuarioAdmin procurar(String CPF) throws ExceptionAdminNaoExiste;
 
-    void deleta(String CPF) throws AdminNaoExisteException;
+    void deletar(String CPF) throws ExceptionAdminNaoExiste;
 
-    void atualizaNome(String CPF, String nome) throws AdminNaoExisteException;
+    boolean existe(String CPF);
 
-    void atualizaIdade(String CPF, int idade) throws AdminNaoExisteException;
+    void atualizaNome(String CPF, String nome) throws ExceptionAdminNaoExiste;
 
-    void atualizaTelefone(String CPF, String telefone) throws AdminNaoExisteException;
+    void atualizaIdade(String CPF, int idade) throws ExceptionAdminNaoExiste;
 
-    void atualizaCEP(String CPF, String CEP) throws AdminNaoExisteException;
+    void atualizaTelefone(String CPF, String telefone) throws ExceptionAdminNaoExiste;
 
-    void atualizaCodigoFuncionario(String CPF, String codigoFuncionario) throws AdminNaoExisteException;
+    void atualizaCEP(String CPF, String CEP) throws ExceptionAdminNaoExiste;
+
+    void atualizaCodigoFuncionario(String CPF, String codigoFuncionario) throws ExceptionAdminNaoExiste;
 }

@@ -1,19 +1,21 @@
 package usuarios.comuns;
 
 public interface RepositorioUsuarioComumInterface {
-    void novoUsuario(UsuarioComum user) throws UsuarioJaExisteException, LimiteAtingidoException;
+    void inserir(UsuarioComum user) throws ExceptionUsuarioJaExiste, ExceptionLimiteAtingidoComum;
 
-    UsuarioComum procura(String CPF) throws UsuarioNaoExisteException;
+    UsuarioComum procurar(String CPF) throws ExceptionUsuarioNaoExiste;
 
-    void deleta(String CPF) throws UsuarioNaoExisteException;
+    void deletar(String CPF) throws ExceptionUsuarioNaoExiste;
 
-    void atualizaNome(String CPF, String nome) throws UsuarioNaoExisteException;
+    boolean existe(String CPF);
 
-    void atualizaIdade(String CPF, int idade) throws UsuarioNaoExisteException;
+    void atualizaNome(String CPF, String nome) throws ExceptionUsuarioNaoExiste;
 
-    void atualizaTelefone(String CPF, String telefone) throws UsuarioNaoExisteException;
+    void atualizaIdade(String CPF, int idade) throws ExceptionUsuarioNaoExiste;
 
-    void atualizaCEP(String CPF, String CEP) throws UsuarioNaoExisteException;
+    void atualizaTelefone(String CPF, String telefone) throws ExceptionUsuarioNaoExiste;
 
-    void atualizaNumeroCartao(String CPF, String numeroCartao) throws UsuarioNaoExisteException;
+    void atualizaCEP(String CPF, String CEP) throws ExceptionUsuarioNaoExiste;
+
+    void atualizaNumeroCartao(String CPF, String numeroCartao) throws ExceptionUsuarioNaoExiste;
 }
