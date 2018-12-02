@@ -1,6 +1,6 @@
-package produto.arma;
+package Arma;
 
-import produto.produto.Produto;
+import Produto.Produto;
 
 public class RepositorioArrayArma implements InterfaceRepositoriosArma {
     private Arma[] arrayArma = new Arma[1000];
@@ -98,4 +98,65 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
             }
         }
     }
+    
+	
+	public Produto[] ProcurarCategoria(String categoria) throws ArmaNaoExisteException{
+		Produto ca[] = new Produto[1000];
+		int k =0;
+		for(int i=0;i<arrayArma.length;i++) {
+			if(arrayArma[i].getCategoria().equals(categoria)) {
+				ca[k]= arrayArma[i];
+				k++;
+			}
+			else if(arrayArma[i]==null && k==0){
+				 throw new ArmaNaoExisteException();
+			}
+		}
+		for(k=0;k < ca.length && ca[k] != null;k++) {}
+		Produto d[] = new Produto[k];
+		for(int i =0;i<ca.length && ca[i] != null;i++) {
+			d[i]=ca[i];
+		}
+		return d;
+	}
+	
+	public Produto[] ProcurarCalibre(String calibre) throws ArmaNaoExisteException{
+		Produto ca[] = new Produto[1000];
+		int k =0;
+		for(int i=0;i<arrayArma.length;i++) {
+			if(arrayArma[i].getCalibre().equals(calibre)) {
+				ca[k]= arrayArma[i];
+				k++;
+			}
+			else if(arrayArma[i]==null && k==0){
+				 throw new ArmaNaoExisteException();
+			}
+		}
+		for(k=0;k < ca.length && ca[k] != null;k++) {}
+		Produto d[] = new Produto[k];
+		for(int i =0;i<ca.length && ca[i] != null;i++) {
+			d[i]=ca[i];
+		}
+		return d;
+	}
+	
+	public Produto[] ProcurarMunicao(int municao) throws ArmaNaoExisteException{
+		Produto ca[] = new Produto[1000];
+		int k =0;
+		for(int i=0;i<arrayArma.length;i++) {
+			if(arrayArma[i].getMunicao()==(municao)) {
+				ca[k]= arrayArma[i];
+				k++;
+			}
+			else if(arrayArma[i]==null && k==0){
+				 throw new ArmaNaoExisteException();
+			}
+		}
+		for(k=0;k < ca.length && ca[k] != null;k++) {}
+		Produto d[] = new Produto[k];
+		for(int i =0;i<ca.length && ca[i] != null;i++) {
+			d[i]=ca[i];
+		}
+		return d;
+	}
 }

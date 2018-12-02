@@ -1,4 +1,4 @@
-package produto.produto;
+package Produto;
 
 public class RepositorioArrayProduto implements InterfaceRepositoriosProduto {
     private Produto[] arrayProduto = new Produto[1000];
@@ -92,7 +92,12 @@ public class RepositorioArrayProduto implements InterfaceRepositoriosProduto {
     public void AtualizarQuantidade(String nome, int quantidade) throws ProdutoNaoExisteException {
         for (int i = 0; i < arrayProduto.length; i++) {
             if (arrayProduto[i].getNome().equals(nome)) {
-                arrayProduto[i].setQuantidade(quantidade);
+            	if(arrayProduto[i].getQuantidade()==0) {
+                    arrayProduto[i].setQuantidade(quantidade);	
+            	}else {
+            		int a = arrayProduto[i].getQuantidade();
+            		arrayProduto[i].setQuantidade(a + quantidade);
+            	}
             } else if (arrayProduto[i] == null) {
                 throw new ProdutoNaoExisteException();
             }

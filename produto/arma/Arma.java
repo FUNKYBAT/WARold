@@ -1,15 +1,15 @@
-package produto.arma;
-import produto.produto.Produto;
+package Arma;
+import Produto.Produto;
 
 public class Arma extends Produto {
 	protected String calibre;
-	protected String cano;
+	protected String categoria;
 	protected int municao;
 	
-	public Arma(String nome,double estrelas,double preco,String descricao,String marca,String numserie,String calibre,String cano,int municao, int quantidade) {
-		super(nome,estrelas,preco,descricao,marca,numserie, quantidade);
+	public Arma(String nome,double estrelas,double preco,String descricao,String marca,String numserie,String calibre,String categoria,int municao,int quantidade) {
+		super(nome,estrelas,preco,descricao,marca,numserie,quantidade);
 		this.calibre = calibre;
-		this.cano = cano;
+		this.categoria = categoria;
 		this.municao = municao;
 	}
 	public String getCalibre() {
@@ -20,12 +20,12 @@ public class Arma extends Produto {
 		this.calibre = calibre;
 	}
 
-	public String getCano() {
-		return cano;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCano(String cano) {
-		this.cano = cano;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public int getMunicao() {
