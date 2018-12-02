@@ -2,7 +2,7 @@ package usuarios.admins;
 
 public class RepositorioUsuarioAdminArray implements RepositorioUsuarioAdminInterface {
     private UsuarioAdmin[] arrayAdmin = new UsuarioAdmin[1000];
-    
+
     @Override
     public void novoAdmin(UsuarioAdmin user) throws LimiteAtingidoException, AdminJaExisteException {
         for (int i = 0; i < arrayAdmin.length; i++) {

@@ -1,54 +1,59 @@
 package fornecedores;
 
-import fornecedores.ExceptionFJC;
-import fornecedores.ExceptionFNE;
-import fornecedores.RepositorioFornecedorInterface;
-
 public class RepositorioFornecedorArray implements RepositorioFornecedorInterface {
     private Fornecedor arrayFornecedor[] = new Fornecedor[140];
 
-    @Override
-    public void novoFornecedor(Fornecedor marca) throws ExceptionFJC {
+    public void novoFornecedor(Fornecedor fornecedor) throws FornecedorJaExisteException, LimiteAtingidoException {
         for (int i = 0; i < arrayFornecedor.length; i++) {
-            if (arrayFornecedor[i] == null) {
-                this.arrayFornecedor[i] = marca;
-            } else if (arrayFornecedor[i].marca.equals(marca)) {
-                throw new ExceptionFJC();
+            if (arrayFornecedor[i].getMarca() == fornecedor.getMarca()) {
+                throw new FornecedorJaExisteException();
+            } else if (arrayFornecedor[i] == null) {
+                this.arrayFornecedor[i] = fornecedor;
+                break;
+            } else if (i == arrayFornecedor.length) {
+                if (arrayFornecedor[i] == null) {
+                    this.arrayFornecedor[i] = fornecedor;
+                    break;
+                } else {
+                    throw new LimiteAtingidoException();
+                }
             }
         }
     }
 
-    @Override
-    public boolean procuraFornecedor(Fornecedor marca) throws ExceptionFNE {
+    public boolean procuraFornecedor(String marca) throws FornecedorNaoExisteException {
         for (int i = 0; i < arrayFornecedor.length; i++) {
-            if (arrayFornecedor[i].equals(marca)) {
+            if (arrayFornecedor[i].getMarca().equals(marca)) {
                 return true;
             } else if (arrayFornecedor[i] == null) {
-                throw new ExceptionFNE();
+                throw new FornecedorNaoExisteException();
             }
         }
         return false; // Caso base.
     }
 
-    @Override
-    public void apagaFornecedor(Fornecedor marca) throws ExceptionFNE {
+
+    public void apagaFornecedor(String marca) throws FornecedorNaoExisteException {
         for (int i = 0; i < arrayFornecedor.length; i++) {
-            if (arrayFornecedor[i].equals(marca)) {
-                arrayProduto[i] = null;
-                i = arrayFornecedor.length; // Sai do laco.
+            if (arrayFornecedor[i].getMarca().equals(marca)) {
+                for (int j = i; j < arrayFornecedor.length; j++) {
+                    if (arrayFornecedor[j] != null)
+                        arrayFornecedor[j] = arrayFornecedor[j + 1];
+                    else
+                        break;
+                }
             } else if (arrayFornecedor[i] == null) {
-                throw new ExceptionFNE();
+                throw new FornecedorNaoExisteException();
             }
         }
     }
 
-    @Override
-    public void atualizaDisponibilidade(String marca, boolean disponibilidade) throws ExceptionFNE {
+    public void atualizaDisponibilidade(String marca, boolean disponibilidade) throws FornecedorNaoExisteException {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].getMarca().equals(marca)) {
                 arrayFornecedor[i].setDisponibilidade(disponibilidade);
             } else if (arrayFornecedor[i] == null) {
-                throw new ExceptionFNE();
+                throw new FornecedorNaoExisteException();
             }
         }
     }

@@ -1,12 +1,11 @@
 package fornecedores;
 
 public interface RepositorioFornecedorInterface {
+    void novoFornecedor(Fornecedor fornecedor) throws FornecedorJaExisteException, LimiteAtingidoException;
 
-    void novoFornecedor(Fornecedor marca) throws ExceptionFJC;
+    boolean procuraFornecedor(String nome) throws FornecedorNaoExisteException;
 
-    boolean procuraFornecedor(Fornecedor marca) throws ExceptionFNE;
+    void apagaFornecedor(String nome) throws FornecedorNaoExisteException;
 
-    void apagaFornecedor(Fornecedor marca) throws ExceptionFNE;
-
-    void atualizaDisponibilidade (Fornecedor disponibilidade) throws ExceptionFNE;
+    void atualizaDisponibilidade(String nome, boolean disponibilidade) throws FornecedorNaoExisteException;
 }

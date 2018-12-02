@@ -4,7 +4,8 @@ public class RepositorioUsuarioAdminLista implements RepositorioUsuarioAdminInte
     UsuarioAdmin admin;
     RepositorioUsuarioAdminLista prox;
 
-    RepositorioUsuarioAdminLista() { }
+    RepositorioUsuarioAdminLista() {
+    }
 
     public void novoAdmin(UsuarioAdmin admin) throws AdminJaExisteException {
         if (this.admin == null) {

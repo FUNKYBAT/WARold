@@ -8,12 +8,13 @@ public abstract class Usuario {
     protected String CEP;
     protected boolean admin = false;
 
-    public Usuario(String nome, int idade, String CPF, String telefone, String CEP) {
+    public Usuario(String nome, int idade, String CPF, String telefone, String CEP, boolean admin) {
         this.nome = nome;
         this.idade = idade;
         this.CPF = CPF;
         this.telefone = telefone;
         this.CEP = CEP;
+        this.admin = admin;
     }
 
     public String getNome() {

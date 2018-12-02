@@ -1,8 +1,8 @@
 package usuarios.admins;
 
 public class UsuarioAdmin extends usuarios.Usuario {
-    public UsuarioAdmin(String nome, int idade, String CPF, String telefone, String CEP, String codigoFuncionario) {
-        super(nome, idade, CPF, telefone, CEP);
+    public UsuarioAdmin(String nome, int idade, String CPF, String telefone, String CEP, boolean admin, String codigoFuncionario) {
+        super(nome, idade, CPF, telefone, CEP, admin);
         this.admin = true;
         this.codigoFuncionario = codigoFuncionario;
     }

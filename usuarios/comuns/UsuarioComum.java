@@ -4,8 +4,8 @@ public class UsuarioComum extends usuarios.Usuario {
 
     protected String numeroCartao;
 
-    public UsuarioComum(String nome, int idade, String CPF, String telefone, String CEP, String numeroCartao) {
-        super(nome, idade, CPF, telefone, CEP);
+    public UsuarioComum(String nome, int idade, String CPF, String telefone, String CEP, boolean admin, String numeroCartao) {
+        super(nome, idade, CPF, telefone, CEP, admin);
         this.numeroCartao = numeroCartao;
     }
 
