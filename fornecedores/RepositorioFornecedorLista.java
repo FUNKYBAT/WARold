@@ -15,23 +15,23 @@ public class RepositorioFornecedorLista implements RepositorioFornecedorInterfac
   }
 
   @Override
-  public void inserirFornecedor(Fornecedor fornecedor) throws ExceptionFJC {
+  public void inserir(Fornecedor fornecedor) throws ExceptionFJC {
     if (this.fornecedor == null) {
       this.fornecedor = fornecedor;
       this.proximo = new RepositorioFornecedorLista();
     } else if (this.fornecedor.getMarca() == fornecedor.getMarca()) {
       throw new ExceptionFJC();
     } else if (this.proximo != null) {
-      this.proximo.inserirFornecedor(fornecedor);
+      this.proximo.inserir(fornecedor);
     }
   }
 
   @Override
-  public boolean procurarFornecedor(Fornecedor marca) throws ExceptionFNE {
+  public boolean procurar(Fornecedor marca) throws ExceptionFNE {
     if (this.fornecedor.equals(marca) && this.fornecedor != null) {
       return true;
     } else if (this.proximo != null) {
-      this.proximo.procurarFornecedor(marca);
+      this.proximo.procurar(marca);
     } else {
       throw new ExceptionFNE();
     }
@@ -39,13 +39,13 @@ public class RepositorioFornecedorLista implements RepositorioFornecedorInterfac
   }
 
   @Override
-  public void deletarFornecedor(Fornecedor marca) throws ExceptionFNE {
+  public void deletar(Fornecedor marca) throws ExceptionFNE {
     if (this.fornecedor != null) {
       if (this.fornecedor.equals(marca)) {
         this.fornecedor = this.proximo.fornecedor;
         this.proximo = this.proximo.proximo;
       } else if (this.proximo != null) {
-        this.proximo.deletarFornecedor(marca);
+        this.proximo.deletar(marca);
       } else {
         throw new ExceptionFNE();
       }
@@ -53,12 +53,12 @@ public class RepositorioFornecedorLista implements RepositorioFornecedorInterfac
   }
 
   @Override
-  public void atualizaDisponibilidade(String marca, boolean disponibilidade) throws ExceptionFNE {
+  public void atualiza(String marca, boolean disponibilidade) throws ExceptionFNE {
     if (this.fornecedor.getMarca() != null) {
       if (this.fornecedor.getMarca.equals(marca)) {
         this.fornecedor.setDisponibilidade(disponibilidade);
       } else {
-        this.proximo.atualizaDisponibilidade(marca, disponibilidade);
+        this.proximo.atualiza(marca, disponibilidade);
       }
     } else {
       throw new ExceptionFNE();
