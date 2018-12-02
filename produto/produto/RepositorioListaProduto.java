@@ -1,4 +1,4 @@
-package produto.produto;
+package Produto;
 
 public class RepositorioListaProduto implements InterfaceRepositoriosProduto {
     private Produto produto;
@@ -98,7 +98,12 @@ public class RepositorioListaProduto implements InterfaceRepositoriosProduto {
     public void AtualizarQuantidade(String nome, int quantidade) throws ProdutoNaoExisteException {
         if (this.produto != null) {
             if (this.produto.getNome().equals(nome)) {
-                this.produto.setQuantidade(quantidade);
+            	if(this.produto.quantidade==0) {
+            		this.produto.setQuantidade(quantidade);	
+            	}else {
+            		int a = this.produto.quantidade;
+            		this.produto.setQuantidade(a + quantidade);
+            	}
             } else if (this.proximo != null) {
                 this.proximo.AtualizarQuantidade(nome, quantidade);
             }

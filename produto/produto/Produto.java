@@ -1,8 +1,8 @@
-package produto.produto;
+package Produto;
 
 public class Produto {
     protected String nome;
-    protected double estrelas; //avaliação
+    protected double estrelas; //avaliacao
     protected double preco;
     protected String descricao;
     protected String marca; //fabricante

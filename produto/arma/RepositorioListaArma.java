@@ -1,6 +1,6 @@
-package produto.arma;
+package Arma;
 
-import produto.produto.Produto;
+import Produto.Produto;
 
 public class RepositorioListaArma implements InterfaceRepositoriosArma {
 
@@ -58,12 +58,12 @@ public class RepositorioListaArma implements InterfaceRepositoriosArma {
         return false;
     }
 
-    public void Atualizarpreco(String nome, double novopreco) throws ArmaNaoExisteException {
+    public void AtualizarPreco(String nome, double novopreco) throws ArmaNaoExisteException {
         if (this.arma != null) {
             if (this.arma.getNome() == nome) {
                 this.arma.setPreco(novopreco);
             } else if (this.proximo != null) {
-                this.proximo.Atualizarpreco(nome, novopreco);
+                this.proximo.AtualizarPreco(nome, novopreco);
             }
         } else {
             throw new ArmaNaoExisteException();
@@ -71,12 +71,13 @@ public class RepositorioListaArma implements InterfaceRepositoriosArma {
     }
 
     public void AtualizarEstrelas(String nome, double novavaliacao) throws ArmaNaoExisteException {
+    	
         if (this.arma != null) {
             if (this.arma.getNome() == nome) {
                 double x = this.arma.getEstrelas();
                 this.arma.setEstrelas((x + novavaliacao) / 2);
             } else if (this.proximo != null) {
-                this.proximo.Atualizarpreco(nome, novavaliacao);
+                this.proximo.AtualizarEstrelas(nome, novavaliacao);
             }
         } else {
             throw new ArmaNaoExisteException();
@@ -94,4 +95,32 @@ public class RepositorioListaArma implements InterfaceRepositoriosArma {
             throw new ArmaNaoExisteException();
         }
     }
+
+	
+	public Produto[] ProcurarCategoria(String categoria) throws ArmaNaoExisteException {
+		RepositorioListaArma a = null;
+		int i =0;
+		if (this.arma != null) { 
+            if (this.arma.getCategoria() == categoria) {
+                i++;
+            }if (this.proximo != null) {
+                this.proximo.ProcurarCategoria(categoria);
+            }
+        } else {
+            throw new ArmaNaoExisteException();
+        }
+		return null;
+	}
+
+	
+	public Produto[] ProcurarCalibre(String calibre) throws ArmaNaoExisteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public Produto[] ProcurarMunicao(int municao) throws ArmaNaoExisteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
