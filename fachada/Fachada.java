@@ -6,17 +6,17 @@ import fornecedores.ExceptionFJC;
 import fornecedores.ExceptionFNE;
 
 public class Fachada {
-    public void inserirFornecedor(Fornecedor marca, CadastroFornecedor fornecedor) throws ExceptionFJC {
-        boolean resultado = fornecedor.procurarFornecedor(marca);
+    public void inserir(Fornecedor marca, CadastroFornecedor fornecedor) throws ExceptionFJC {
+        boolean resultado = fornecedor.procurar(marca);
         if (resultado == false) {
-            fornecedor.inserirFornecedor(marca);
+            fornecedor.inserir(marca);
         }
     }
 
-    public void deletarFornecedor(Fornecedor marca, CadastroFornecedor fornecedor) throws ExceptionFNE {
-        boolean resultado = fornecedor.procurarFornecedor(marca);
+    public void deletar(Fornecedor marca, CadastroFornecedor fornecedor) throws ExceptionFNE {
+        boolean resultado = fornecedor.procurar(marca);
         if (resultado == false) {
-            fornecedor.deletarFornecedor(marca);
+            fornecedor.deletar(marca);
         }
     }
 }
