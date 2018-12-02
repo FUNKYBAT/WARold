@@ -15,23 +15,23 @@ public class RepositorioFornecedorLista implements RepositorioFornecedorInterfac
   }
 
   @Override
-  public void novoFornecedor(Fornecedor fornecedor) throws ExceptionFJC {
+  public void inserirFornecedor(Fornecedor fornecedor) throws ExceptionFJC {
     if (this.fornecedor == null) {
       this.fornecedor = fornecedor;
       this.proximo = new RepositorioFornecedorLista();
     } else if (this.fornecedor.getMarca() == fornecedor.getMarca()) {
       throw new ExceptionFJC();
     } else if (this.proximo != null) {
-      this.proximo.novoFornecedor(fornecedor);
+      this.proximo.inserirFornecedor(fornecedor);
     }
   }
 
   @Override
-  public boolean procuraFornecedor(Fornecedor marca) throws ExceptionFNE {
+  public boolean procurarFornecedor(Fornecedor marca) throws ExceptionFNE {
     if (this.fornecedor.equals(marca) && this.fornecedor != null) {
       return true;
     } else if (this.proximo != null) {
-      this.proximo.procuraFornecedor(marca);
+      this.proximo.procurarFornecedor(marca);
     } else {
       throw new ExceptionFNE();
     }
@@ -39,13 +39,13 @@ public class RepositorioFornecedorLista implements RepositorioFornecedorInterfac
   }
 
   @Override
-  public void apagaFornecedor(Fornecedor marca) throws ExceptionFNE {
+  public void deletarFornecedor(Fornecedor marca) throws ExceptionFNE {
     if (this.fornecedor != null) {
       if (this.fornecedor.equals(marca)) {
         this.fornecedor = this.proximo.fornecedor;
         this.proximo = this.proximo.proximo;
       } else if (this.proximo != null) {
-        this.proximo.apagaFornecedor(marca);
+        this.proximo.deletarFornecedor(marca);
       } else {
         throw new ExceptionFNE();
       }

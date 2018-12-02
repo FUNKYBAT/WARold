@@ -2,11 +2,11 @@ package fornecedores;
 
 public interface RepositorioFornecedorInterface {
 
-    void novoFornecedor(Fornecedor marca) throws ExceptionFJC;
+    void inserirFornecedor(Fornecedor marca) throws ExceptionFJC, ExceptionLFA;
 
-    boolean procuraFornecedor(Fornecedor marca) throws ExceptionFNE;
+    boolean procurarFornecedor(Fornecedor marca) throws ExceptionFNE;
 
-    void apagaFornecedor(Fornecedor marca) throws ExceptionFNE;
+    void deletarFornecedor(Fornecedor marca) throws ExceptionFNE;
 
     void atualizaDisponibilidade (Fornecedor disponibilidade) throws ExceptionFNE;
 }

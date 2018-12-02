@@ -8,18 +8,25 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     private Fornecedor arrayFornecedor[] = new Fornecedor[140];
 
     @Override
-    public void novoFornecedor(Fornecedor marca) throws ExceptionFJC {
+    public void inserirFornecedor(Fornecedor marca) throws ExceptionFJC {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i] == null) {
                 this.arrayFornecedor[i] = marca;
             } else if (arrayFornecedor[i].marca.equals(marca)) {
                 throw new ExceptionFJC();
+            } else if (i == arrayFornecedor.length) {
+                if (arrayFornecedor[i] == null) {
+                    this.arrayFornecedor[i] = marca;
+                    i = arrayFornecedor.length;
+                } else {
+                    throw new ExceptionLFA();
+                }
             }
         }
     }
 
     @Override
-    public boolean procuraFornecedor(Fornecedor marca) throws ExceptionFNE {
+    public boolean procurarFornecedor(Fornecedor marca) throws ExceptionFNE {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].equals(marca)) {
                 return true;
@@ -31,7 +38,7 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     }
 
     @Override
-    public void apagaFornecedor(Fornecedor marca) throws ExceptionFNE {
+    public void deletarFornecedor(Fornecedor marca) throws ExceptionFNE {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].equals(marca)) {
                 arrayProduto[i] = null;
