@@ -25,7 +25,7 @@ public class Fornecedor {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca (String marca) {
         this.marca = marca;
     }
 
@@ -33,7 +33,7 @@ public class Fornecedor {
         return contato;
     }
 
-    public void setContato(String contato) {
+    public void setContato (String contato) {
         this.contato = contato;
     }
 
@@ -41,7 +41,7 @@ public class Fornecedor {
         return tipoproduto;
     }
 
-    public void setTipoproduto(String tipoproduto) {
+    public void setTipoproduto (String tipoproduto) {
         this.tipoproduto = tipoproduto;
     }
 
@@ -49,7 +49,7 @@ public class Fornecedor {
         return disponibilidade;
     }
 
-    public void setDisponibilidade(boolean disponibilidade) {
+    public void setDisponibilidade (boolean disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
 }
