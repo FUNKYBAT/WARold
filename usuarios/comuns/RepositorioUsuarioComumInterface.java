@@ -1,7 +1,7 @@
 package usuarios.comuns;
 
 public interface RepositorioUsuarioComumInterface {
-    void novoUsuario(UsuarioComum user) throws UsuarioJaExisteException;
+    void novoUsuario(UsuarioComum user) throws UsuarioJaExisteException, LimiteAtingidoException;
 
     UsuarioComum procura(String CPF) throws UsuarioNaoExisteException;
 

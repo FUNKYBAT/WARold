@@ -1,7 +1,7 @@
 package usuarios.admins;
 
 public interface RepositorioUsuarioAdminInterface {
-    void novoAdmin(UsuarioAdmin admin) throws AdminJaExisteException;
+    void novoAdmin(UsuarioAdmin admin) throws AdminJaExisteException, LimiteAtingidoException;
 
     UsuarioAdmin procura(String CPF) throws AdminNaoExisteException;
 

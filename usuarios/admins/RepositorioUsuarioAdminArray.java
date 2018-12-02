@@ -2,14 +2,22 @@ package usuarios.admins;
 
 public class RepositorioUsuarioAdminArray implements RepositorioUsuarioAdminInterface {
     private UsuarioAdmin[] arrayAdmin = new UsuarioAdmin[1000];
-
+    
     @Override
-    public void novoAdmin(UsuarioAdmin admin) throws AdminJaExisteException {
+    public void novoAdmin(UsuarioAdmin user) throws LimiteAtingidoException, AdminJaExisteException {
         for (int i = 0; i < arrayAdmin.length; i++) {
-            if (arrayAdmin[i].getNome().equals(admin.getNome())) {
+            if (arrayAdmin[i].getNome() == user.getNome()) {
                 throw new AdminJaExisteException();
             } else if (arrayAdmin[i] == null) {
-                this.arrayAdmin[i] = admin;
+                this.arrayAdmin[i] = user;
+                break;
+            } else if (i == arrayAdmin.length) {
+                if (arrayAdmin[i] == null) {
+                    this.arrayAdmin[i] = user;
+                    break;
+                } else {
+                    throw new LimiteAtingidoException();
+                }
             }
         }
     }

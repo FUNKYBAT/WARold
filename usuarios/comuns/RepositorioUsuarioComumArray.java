@@ -4,12 +4,20 @@ public class RepositorioUsuarioComumArray implements RepositorioUsuarioComumInte
     private UsuarioComum[] arrayUsuarioComum = new UsuarioComum[1000];
 
     @Override
-    public void novoUsuario(UsuarioComum user) throws UsuarioJaExisteException {
+    public void novoUsuario(UsuarioComum user) throws LimiteAtingidoException, UsuarioJaExisteException {
         for (int i = 0; i < arrayUsuarioComum.length; i++) {
-            if (arrayUsuarioComum[i].getNome().equals(user.getNome())) {
+            if (arrayUsuarioComum[i].getNome() == user.getNome()) {
                 throw new UsuarioJaExisteException();
             } else if (arrayUsuarioComum[i] == null) {
                 this.arrayUsuarioComum[i] = user;
+                break;
+            } else if (i == arrayUsuarioComum.length) {
+                if (arrayUsuarioComum[i] == null) {
+                    this.arrayUsuarioComum[i] = user;
+                    break;
+                } else {
+                    throw new LimiteAtingidoException();
+                }
             }
         }
     }
