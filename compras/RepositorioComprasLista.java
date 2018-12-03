@@ -1,5 +1,7 @@
 package compras;
 
+import java.util.Random;
+
 import produto.Produto;
 
 public class RepositorioComprasLista implements RepositorioComprasInterface {
@@ -7,68 +9,76 @@ public class RepositorioComprasLista implements RepositorioComprasInterface {
 	private Produto qtd;
 	private RepositorioComprasLista proximo;
 
-	public RepositorioComprasLista() {}
+	public RepositorioComprasLista() {
+	}
 
 	@Override
-	public void AdicionarItem(Produto produto) {
-		if(this.produto.getNome() == null) {
+	public void adicionarItem(Produto produto) {
+		if (this.produto.getNome() == null) {
 			this.produto = produto;
 			this.proximo = new RepositorioComprasLista();
-		}else if(this.produto.getNome() == produto.getNome()) {
-			
+		} else if (this.produto.getNome() == produto.getNome()) {
+			//Aqui precisa colocar código para adicionar a qtd do produto
 		}
-		
+
 	}
+
 	@Override
-	public void RemoverItem(String nome) throws ItemNaoEstaNoCarrinhoException {
-		if(this.produto != null) {
-			if(this.produto.getNome().equals(nome)) {
+	public void removerItem(String nome) throws ItemNaoEstaNoCarrinhoException {
+		if (this.produto != null) {
+			if (this.produto.getNome().equals(nome)) {
 				this.produto = this.proximo.produto;
 				this.proximo = this.proximo.proximo;
-			}else {
-				this.proximo.RemoverItem(nome);
+			} else {
+				this.proximo.removerItem(nome);
 			}
-		}else {
+		} else {
 			throw new ItemNaoEstaNoCarrinhoException();
 		}
 	}
+
 	@Override
-	public Produto ProcurarItem(String nome) throws ItemNaoEstaNoCarrinhoException {
+	public Produto procurarItem(String nome) throws ItemNaoEstaNoCarrinhoException {
 		Produto p = null;
 		if (this.produto != null) {
-			if(this.produto.getNome().equals(nome)) {
+			if (this.produto.getNome().equals(nome)) {
 				p = this.produto;
 				return p;
-			}else {
-				this.proximo.ProcurarItem(nome);
-				return this.proximo.ProcurarItem(nome);
+			} else {
+				this.proximo.procurarItem(nome);
+				return this.proximo.procurarItem(nome);
 			}
-		}else {
+		} else {
 			throw new ItemNaoEstaNoCarrinhoException();
 		}
 	}
+
 	@Override
-	public boolean Existe(String nome) {
-		if(this.produto != null) {
-			if(this.produto.getNome().equals(nome)) {
+	public boolean existe(String nome) {
+		if (this.produto != null) {
+			if (this.produto.getNome().equals(nome)) {
 				return true;
-			}else {
-				return this.proximo.Existe(nome);
+			} else {
+				return this.proximo.existe(nome);
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
-	public void InserirCupom(int codCupom) {
-		// TODO Auto-generated method stub
+	public int inserirCupom(int codCupom) {
+		Random geradorDesconto = new Random();
 		
+		// TODO Auto-generated method stub
+		return codCupom;
 	}
 
 	@Override
-	public void CalcularFrete(int geradorFrete) {
-		// TODO Auto-generated method stub
-		
+	public int calcularFrete(int cep) {
+		Random geradorFrete = new Random();
+		int valor = geradorFrete.nextInt(20);
+		return valor;
 	}
+	
 }
