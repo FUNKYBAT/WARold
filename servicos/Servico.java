@@ -1,4 +1,3 @@
-package servicos;
 
 public abstract class Servico {
 	private String nomeServico;

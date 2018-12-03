@@ -1,7 +1,6 @@
-package servicos;
 
-public class LimiteAtingidoException extends Exception{
+public class LimiteAtingidoException extends Exception {
 	public LimiteAtingidoException() {
-		super("O limite de serviÃ§os da loja foi atingido, retire alguns para botar novos!");
+		super("Limite de serviços atingido!");
 	}
 }

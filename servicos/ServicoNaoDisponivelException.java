@@ -1,7 +1,6 @@
-package servicos;
 
 public class ServicoNaoDisponivelException extends Exception{
 	public ServicoNaoDisponivelException() {
-		super("Este serviï¿½o nï¿½o estï¿½ disponï¿½vel!");
+		super("Este serviço não está disponível!");
 	}
 }

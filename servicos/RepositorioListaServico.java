@@ -1,4 +1,3 @@
-package servicos;
 
 public class RepositorioListaServico implements RepositorioServico {
 	private Servico servico;
@@ -36,7 +35,7 @@ public class RepositorioListaServico implements RepositorioServico {
 
 	@Override
 	public void atualizaNome(String nome, String decricao) throws ServicoNaoDisponivelException {
-		
+
 		if (this.servico.getDescricaoServico() != null) {
 			if (this.servico.getDescricaoServico().equals(decricao)) {
 				this.servico.setNomeServico(nome);
@@ -126,11 +125,23 @@ public class RepositorioListaServico implements RepositorioServico {
 			this.proximo.procurar(nome);
 		}
 		if (achou == true) {
-		return retorno;
+			return retorno;
 		} else {
 			ServicoNaoDisponivelException e;
 			e = new ServicoNaoDisponivelException();
 			throw e;
+		}
+	}
+	@Override
+	public boolean existe(String nome) {
+		if (this.servico.getNomeServico() != null) {
+			if (this.servico.getNomeServico().equals(nome)) {
+				return true;
+			} else {
+				return this.proximo.existe(nome);
+			}
+		} else {
+			return false;
 		}
 	}
 
