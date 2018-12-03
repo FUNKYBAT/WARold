@@ -8,7 +8,7 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     private Fornecedor arrayFornecedor[] = new Fornecedor[140];
 
     @Override
-    public void inserir(Fornecedor marca) throws ExceptionFJC {
+    public void inserirFornecedor(Fornecedor marca) throws ExceptionFJC, ExceptionLFA {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i] == null) {
                 this.arrayFornecedor[i] = marca;
@@ -26,7 +26,7 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     }
 
     @Override
-    public boolean procurar(Fornecedor marca) throws ExceptionFNE {
+    public boolean procurarFornecedor(Fornecedor marca) throws ExceptionFNE {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].equals(marca)) {
                 return true;
@@ -38,10 +38,10 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     }
 
     @Override
-    public void deletar(Fornecedor marca) throws ExceptionFNE {
+    public void deletarFornecedor(Fornecedor marca) throws ExceptionFNE {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].equals(marca)) {
-                arrayProduto[i] = null;
+                arrayFornecedor[i] = null;
                 i = arrayFornecedor.length; // Sai do laco.
             } else if (arrayFornecedor[i] == null) {
                 throw new ExceptionFNE();
@@ -50,7 +50,7 @@ public class RepositorioFornecedorArray implements RepositorioFornecedorInterfac
     }
 
     @Override
-    public void atualiza(String marca, boolean disponibilidade) throws ExceptionFNE {
+    public void atualizaDisponibilidade(String marca, boolean disponibilidade) throws ExceptionFNE {
         for (int i = 0; i < arrayFornecedor.length; i++) {
             if (arrayFornecedor[i].getMarca().equals(marca)) {
                 arrayFornecedor[i].setDisponibilidade(disponibilidade);
