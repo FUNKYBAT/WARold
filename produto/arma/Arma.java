@@ -4,9 +4,9 @@ import Produto.Produto;
 public class Arma extends Produto {
 	protected String calibre;
 	protected String categoria;
-	protected int municao;
+	protected String municao;
 	
-	public Arma(String nome,double estrelas,double preco,String descricao,String marca,String numserie,String calibre,String categoria,int municao,int quantidade) {
+	public Arma(String nome,double estrelas,double preco,String descricao,String marca,String numserie,String calibre,String categoria,String municao,int quantidade) {
 		super(nome,estrelas,preco,descricao,marca,numserie,quantidade);
 		this.calibre = calibre;
 		this.categoria = categoria;
@@ -28,11 +28,11 @@ public class Arma extends Produto {
 		this.categoria = categoria;
 	}
 
-	public int getMunicao() {
+	public String getMunicao() {
 		return municao;
 	}
 
-	public void setMunicao(int municao) {
+	public void setMunicao(String municao) {
 		this.municao = municao;
 	}
 

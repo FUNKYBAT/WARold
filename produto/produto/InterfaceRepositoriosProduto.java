@@ -1,8 +1,8 @@
-package produto.produto;
+package Produto;
 
 public interface InterfaceRepositoriosProduto {
 
-    void CadastrarCatalogo(Produto produto) throws LimiteAtingidoException, ProdutoJaExisteException;
+    void CadastrarCatalogo(Produto produto) throws PLimiteAtingidoException, ProdutoJaExisteException;
 
     void RemoverCatalogo(String nome) throws ProdutoNaoExisteException;
 
