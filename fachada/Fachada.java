@@ -18,10 +18,12 @@ import fornecedores.ExceptionFNE;
 public class WAR {
     private CadastroAdmin admin;
     private CadastroUsuario usuario;
+	private CadastroFornecedor fornecedor;
 
     public WAR(boolean tipo) {
         usuario = new CadastroUsuario(tipo);
         admin = new CadastroAdmin(tipo);
+	fornecedor = new CadastroFornecedor(tipo);
     }
 
     public void cadastrarUsuario(UsuarioComum user) throws ExceptionLimiteAtingidoComum, ExceptionUsuarioJaExiste {
@@ -97,11 +99,11 @@ public class WAR {
     }
 	
     public void inserirFornecedor(String marca) throws ExceptionFJC {
-        admin.inserirFornecedor(marca);
+        fornecedor.inserirFornecedor(marca);
     }
 	
     public void deletarFornecedor(String marca) throws ExceptionFNE {
-        admin.deletarFornecedor(marca);
+        fornecedor.deletarFornecedor(marca);
     }
 }
 /*
