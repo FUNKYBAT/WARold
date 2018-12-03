@@ -1,4 +1,4 @@
-package produto.arma;
+package arma;
 
 public class ArmaNaoExisteException extends Exception{
     ArmaNaoExisteException(){

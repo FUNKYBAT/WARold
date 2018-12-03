@@ -1,7 +1,7 @@
-package Arma;
+package arma;
 
-import Produto.Produto;
-import Produto.ProdutoNaoExisteException;
+import produto.Produto;
+import produto.ProdutoNaoExisteException;
 
 public class RepositorioListaArma implements InterfaceRepositoriosArma {
 

@@ -1,5 +1,5 @@
-package Arma;
-import Produto.Produto;
+package arma;
+import produto.Produto;
 
 public class Arma extends Produto {
 	protected String calibre;

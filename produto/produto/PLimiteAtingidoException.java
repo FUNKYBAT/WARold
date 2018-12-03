@@ -1,4 +1,4 @@
-package Produto;
+package produto;
 
 public class PLimiteAtingidoException extends Exception {
     public PLimiteAtingidoException(){

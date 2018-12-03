@@ -1,6 +1,6 @@
-package Arma;
-import Produto.Produto;
-import Produto.ProdutoNaoExisteException;
+package arma;
+import produto.Produto;
+import produto.ProdutoNaoExisteException;
 
 public interface InterfaceRepositoriosArma {
 

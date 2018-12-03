@@ -1,4 +1,4 @@
-package produto.produto;
+package produto;
 
 public class ProdutoNaoExisteException extends Exception {
     public ProdutoNaoExisteException(){

@@ -1,6 +1,6 @@
-package Arma;
+package arma;
 
-import Produto.Produto;
+import produto.Produto;
 
 public class RepositorioArrayArma implements InterfaceRepositoriosArma {
     private Arma[] arrayArma = new Arma[1000];
@@ -38,7 +38,7 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
         }
     }
 
-    public Produto Procurar(String nome) throws ArmaNaoExisteException {
+    public Arma Procurar(String nome) throws ArmaNaoExisteException {
         for (int i = 0; i < arrayArma.length; i++) {
             if (arrayArma[i].getNome().equals(nome)) {
                 return arrayArma[i];
@@ -100,8 +100,8 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
     }
     
 	
-	public Produto[] ProcurarCategoria(String categoria) throws ArmaNaoExisteException{
-		Produto ca[] = new Produto[1000];
+	public Arma[] ProcurarCategoria(String categoria, int x) throws ArmaNaoExisteException{
+		Arma ca[] = new Arma[1000];
 		int k =0;
 		for(int i=0;i<arrayArma.length;i++) {
 			if(arrayArma[i].getCategoria().equals(categoria)) {
@@ -113,15 +113,15 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
 			}
 		}
 		for(k=0;k < ca.length && ca[k] != null;k++) {}
-		Produto d[] = new Produto[k];
+		Arma d[] = new Arma[k];
 		for(int i =0;i<ca.length && ca[i] != null;i++) {
 			d[i]=ca[i];
 		}
 		return d;
 	}
 	
-	public Produto[] ProcurarCalibre(String calibre) throws ArmaNaoExisteException{
-		Produto ca[] = new Produto[1000];
+	public Arma[] ProcurarCalibre(String calibre, int x) throws ArmaNaoExisteException{
+		Arma ca[] = new Arma[1000];
 		int k =0;
 		for(int i=0;i<arrayArma.length;i++) {
 			if(arrayArma[i].getCalibre().equals(calibre)) {
@@ -133,18 +133,18 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
 			}
 		}
 		for(k=0;k < ca.length && ca[k] != null;k++) {}
-		Produto d[] = new Produto[k];
+		Arma d[] = new Arma[k];
 		for(int i =0;i<ca.length && ca[i] != null;i++) {
 			d[i]=ca[i];
 		}
 		return d;
 	}
 	
-	public Produto[] ProcurarMunicao(int municao) throws ArmaNaoExisteException{
-		Produto ca[] = new Produto[1000];
+	public Arma[] ProcurarMunicao(String municao, int x) throws ArmaNaoExisteException{
+		Arma ca[] = new Arma[1000];
 		int k =0;
 		for(int i=0;i<arrayArma.length;i++) {
-			if(arrayArma[i].getMunicao()==(municao)) {
+			if(arrayArma[i].getMunicao().equals(municao)) {
 				ca[k]= arrayArma[i];
 				k++;
 			}
@@ -153,7 +153,7 @@ public class RepositorioArrayArma implements InterfaceRepositoriosArma {
 			}
 		}
 		for(k=0;k < ca.length && ca[k] != null;k++) {}
-		Produto d[] = new Produto[k];
+		Arma d[] = new Arma[k];
 		for(int i =0;i<ca.length && ca[i] != null;i++) {
 			d[i]=ca[i];
 		}

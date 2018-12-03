@@ -1,18 +1,18 @@
-package Cadastros;
-import Arma.Arma;
-import Arma.ArmaJaExisteException;
-import Arma.InterfaceRepositoriosArma;
-import Arma.LimiteAtingidoException;
-import Arma.RepositorioArrayArma;
-import Arma.RepositorioListaArma;
-import Produto.InterfaceRepositoriosProduto;
-import Produto.PLimiteAtingidoException;
-import Produto.Produto;
-import Produto.ProdutoJaExisteException;
-import Produto.ProdutoNaoExisteException;
-import Produto.RepositorioArrayProduto;
-import Produto.RepositorioListaProduto;
-import Arma.ArmaNaoExisteException;
+package cadastros;
+import arma.Arma;
+import arma.ArmaJaExisteException;
+import arma.InterfaceRepositoriosArma;
+import arma.LimiteAtingidoException;
+import arma.RepositorioArrayArma;
+import arma.RepositorioListaArma;
+import produto.InterfaceRepositoriosProduto;
+import produto.PLimiteAtingidoException;
+import produto.Produto;
+import produto.ProdutoJaExisteException;
+import produto.ProdutoNaoExisteException;
+import produto.RepositorioArrayProduto;
+import produto.RepositorioListaProduto;
+import arma.ArmaNaoExisteException;
 
 
 public class Cadastros {
